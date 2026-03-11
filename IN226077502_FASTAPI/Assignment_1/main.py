@@ -5,7 +5,6 @@ app = FastAPI()
 def home():
     return {"This is home page. thank you for Visiting.."}
 
-
 products = [
     {"id": 1, "name": "Samsung Galaxy A33", "price": 23999, "category": "electronics", "in_stock": True},
     {"id": 2, "name": "Oppo F17 Pro", "price": 21999, "category": "electronics", "in_stock": True},
@@ -16,14 +15,15 @@ products = [
     {"id": 5, "name": "Classmate Notebook", "price": 120, "category": "stationery", "in_stock": True},
     {"id": 6, "name": "Boat Rockerz 255 Earphones", "price": 1499, "category": "electronics", "in_stock": False},
     {"id": 7, "name": "Wooden Study Table", "price": 4500, "category": "furniture", "in_stock": True}
-    
     ]
+
 @app.get("/products")
 def show_all_products():
     return {
         "products":products,
         "total":len(products)
     }
+
 
 @app.get("/products/category/{category_name}")
 def get_products_by_category(category_name: str):
@@ -56,6 +56,7 @@ def in_stock_products():
         "count":len(filter_product)
     }
 
+
 @app.get("/store/summary")
 def store_info():
 
@@ -78,6 +79,7 @@ def store_info():
         "out_stock":len(out_stock_product),
         "category":categories
     }
+
 
 @app.get("/products/search/{keyword}")
 def search_products(keyword: str):
@@ -105,3 +107,4 @@ def products_deals():
         "best_deal":best_deal,
         "premium_pick":pre_pick
     }
+
